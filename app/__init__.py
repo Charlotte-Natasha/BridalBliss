@@ -6,7 +6,6 @@ from flask_login import LoginManager
 
 login_manager = LoginManager()
 db = SQLAlchemy()
-from .model import User
 
 # Initializing application
 def create_app(config_name):
