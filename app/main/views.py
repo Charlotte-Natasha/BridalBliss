@@ -27,9 +27,10 @@ def save_picture(form_picture):
 @main.route('/')
 def index():
     title='Bridalbliss'
+    
 
     page = request.args.get('page',1, type = int )
-    services = Service.query.order_by(Service.posted.desc()).paginate(page = page, per_page = 3)
+    services = Service.query.order_by(Service.user_id.desc()).paginate(page = page, per_page = 3)
     return render_template('index.html',services=services )
 
 
@@ -80,7 +81,7 @@ def addservice(user_id):
             service=Service()
             service.save()
             return redirect('main.index')
-    return render_template('addservice.html',form=form, title='Add service')
+    return render_template('service/addservice.html',form=form, title='Add service')
 
 @main.route('/dispservices',methods=['GET','POST'])
 def dispservices():
@@ -97,7 +98,7 @@ def filterservice():
         affordable_services = db.session.query(Service).filter(Service.cost<=budget).all()
     
 
-    return render_template('budget.html', budgets=affordable_services)
+    return render_template('budget/budget.html', budgets=affordable_services)
 
 
 
@@ -112,6 +113,9 @@ def makeorder(serv_id):
             return redirect('main.index')
     return render_template('orders/makeorder.html',form=form)
 
+
+
+
 @main.route('/orders/<int:user_id>')
 @login_required
 def orders(user_id):
@@ -119,6 +123,18 @@ def orders(user_id):
 
     allorders=Order.query.filter_by(user_id=user_id).all()
     return render_template('orders/orders.html', orders=allorders,user=user)
+
+@main.route('/deleteorder/<int:id>',methods=['GET','POST'])
+@login_required
+def deleteorder(id):
+    order=Order.query.get(id).first()
+    order.delete()
+    return redirect('main.orders')
+
+
+
+
+
 
 @main.route('/review/<int:serv_id>',methods=['GET','POST'])
 @login_required 

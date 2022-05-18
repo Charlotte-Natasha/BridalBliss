@@ -13,6 +13,7 @@
             <th scope="col">Order Date</th>
             <th scope="col">Number of services ordered</th>
             <th scope="col">More Details</th>
+            <th scope="col"> Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
             <td>{{order.order_date}}</td>
             <td>{{order.services|count}}</td>
             <td>{{order.details}}</td>
+            <td><a class="btn btn-danger" href="{{url_for('main.deleteorders',id=order.id)}}">Delete</a></td>
           </tr>
           {%endfor%}
          

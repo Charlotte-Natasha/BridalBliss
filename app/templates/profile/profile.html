@@ -17,6 +17,9 @@
                 <span class="text-danger">{{ error }}</span></br>
               {% endfor %}
             {%endif%}
+
+     
+            <div class="col-md-3  mt-2"><a class="btn btn-sm btn-outline-success " id="ref" href="{{url_for('main.addservice',user_id=current_user.id)}}">New service<i class="fa-solid fa-plus ms-2 text-success"></i></a></div>
     <div class="card testimonial-card">
     <div class="card-up indigo lighten-1"></div>
     <div class="avatar mx-auto white">
