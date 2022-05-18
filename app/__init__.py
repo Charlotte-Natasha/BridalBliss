@@ -8,7 +8,7 @@ login_manager = LoginManager()
 db = SQLAlchemy()
 
 migrate=Migrate()
-# Initializing application
+#Initializing application
 def create_app(config_name):
     app = Flask(__name__)
 
@@ -18,9 +18,8 @@ def create_app(config_name):
     app.register_blueprint(main)
 
     db.init_app(app)
-    from .model import User,Order,Review,Service
     login_manager.init_app(app)
-    migrate.init_app(app, db)
+    migrate = Migrate(app, db)
 
     return app
     

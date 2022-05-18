@@ -10,7 +10,7 @@ import os
 from PIL import Image
 from app.main import main
 
-
+@main.route('/')
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -90,7 +90,7 @@ def dispservices():
 
 @main.route('/filterservice',methods=['GET','POST'])
 @login_required
- 
+
 def filterservice():
     form=SelectServiceForm()
     if form.validate_on_submit():
