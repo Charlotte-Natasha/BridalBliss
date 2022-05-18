@@ -6,9 +6,9 @@
             <h3 class="text-center">All reviews for this service</h3> {% for review in all_reviews %}
             <div class="card w-90 mb-3">
                 <div class="card-body">
-                    <h5>{{review.services.id}}</h5>
+                    <h5>{{review.services.category}}</h5>
                     <p class="card-title">{{ review.review }}</p>
-                    <p class="card-text">--- {{review.users.id}}</p>
+                    <p class="card-text">--- {{review.users.username}}</p>
                 </div>
             </div>
             {% endfor %}
