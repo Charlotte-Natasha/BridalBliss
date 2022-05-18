@@ -13,8 +13,8 @@ def create_app(config_name):
 
     app.config.from_object(config_options[config_name])
 
-    from .main import main_blueprint
-    app.register_blueprint(main_blueprint)
+    from .main import main
+    app.register_blueprint(main)
 
     db.init_app(app)
     # login_manager.init_app(app)
