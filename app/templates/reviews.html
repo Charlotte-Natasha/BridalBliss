@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block content %}
+<div class="container">
+    <div class="row">
+        {% if all_reviews %}
+        <div class="col-md-7">
+            <h3 class="text-center">All reviews for this service</h3> {% for review in all_reviews %}
+            <div class="card w-90 mb-3">
+                <div class="card-body">
+                    <h5>{{review.services.id}}</h5>
+                    <p class="card-title">{{ review.review }}</p>
+                    <p class="card-text">--- {{review.users.id}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-5  reviewform">
+            {{wtf.quick_form(form)}}
+        </div>
+    </div>
+    {% else %}
+    <div class="card w-90 mb-3">
+        <div class="card-body">
+            <p class="card-title">No reviews for this yet for this service. Would you like to make a review?</p>
+        </div>
+    </div>
+    <div class="col-md-5">
+        {{wtf.quick_form(form)}}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
