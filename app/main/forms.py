@@ -3,7 +3,7 @@ from flask_wtf.file import FileField,FileAllowed
 from wtforms import StringField,TextAreaField, SubmitField,ValidationError,DateTimeField,SelectField,IntegerField
 from wtforms.validators import DataRequired,Email,Length
 from flask_login import current_user
-# from ..models import User
+from ..model import User
 
 class UpdateProfile(FlaskForm):
     username = StringField('Enter Your Username', validators=[DataRequired()])
@@ -34,7 +34,7 @@ class ReviewForm(FlaskForm):
 
 
 class SelectServiceForm(FlaskForm):
-    category=SelectField('choose service category', choices=[('Photograpy', 'photograpy'), ('Catering', 'catering'), ('Transport', 'transport')])
+    category=SelectField('choose service category', choices=[('Photography', 'photography'), ('Catering', 'catering'), ('Transport', 'transport')])
     budget=IntegerField('Enter amount not less than Ksh 50,000', validators=[DataRequired(),Length(min=50000)])
     delivery_date=DateTimeField('Expected date of delivery', validators=[DataRequired()])
     submit=SubmitField('Submit Details')

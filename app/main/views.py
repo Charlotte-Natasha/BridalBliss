@@ -1,22 +1,15 @@
 from flask import render_template,redirect,url_for,abort,request,flash
-from app.main import main
-from app.models import User,Order,Revieew,Service
+from app.model import User,Order,Review,Service
 from .forms import UpdateProfile,ReviewForm,OrderForm,SelectServiceForm,AddServiceForm
 from .. import db
-from ..request import get_quotes,setInterval
 from flask_login import login_required,current_user
 # from ..emails import mail_message
 import secrets
 import os
 from PIL import Image
+from app.main import main
 
 @main.route('/')
-def index():
-    quotes = get_quotes()
-    # quotes=setInterval(get_quotes,5)
-    page = request.args.get('page',1, type = int )
-    services = Service.query.order_by(Service.posted.desc()).paginate(page = page, per_page = 3)
-    return render_template('index.html', quote = quotes,services=services)
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -42,7 +35,7 @@ def profile():
         current_user.email = form.email.data
         current_user.bio = form.bio.data
         db.session.commit()
-        flash('Succesfully updated your profile')
+        flash('Successfully updated your profile')
         return redirect(url_for('main.profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
@@ -75,7 +68,7 @@ def service(user_id):
         if form.validate_on_submit():
             service=Service()
             service.save()
-    render_template('service.html',form=form title='Add service')
+    return render_template('service.html',form=form, title='Add service')
 
 
 
