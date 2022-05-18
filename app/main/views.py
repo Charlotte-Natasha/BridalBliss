@@ -1,3 +1,4 @@
+from .forms import LogIn, Signup  
 from flask import render_template,redirect,url_for,abort,request,flash
 from app.model import User,Order,Review,Service
 from .forms import UpdateProfile,ReviewForm,OrderForm,SelectServiceForm,AddServiceForm
@@ -10,6 +11,16 @@ from PIL import Image
 from app.main import main
 
 
+@main.route('/')
+def index():
+    return render_template('about.html')
+
+@main.route('/login')
+def login():
+    form=LogIn()
+    return render_template('login.html', form=form)  
+
+@main.route('/')
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
