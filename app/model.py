@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
-  
+
     @property
     def set_password(self):
         raise AttributeError("You cannot read the password attribute")
@@ -52,7 +52,7 @@ class Service(db.Model):
     order_id=db.Column(db.Integer, db.ForeignKey('orders.id'))
 
     reviews= db.relationship('Review',backref = 'service',lazy = "dynamic")
-       
+
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -69,10 +69,10 @@ class Order(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     order_date=db.Column(db.DateTime, default=datetime.utcnow)
-
+    details=db.Column(db.Text())
     services=db.relationship("Service",backref="order",lazy="dynamic")
     
-     
+
     def save(self):
         db.session.add(self)
         db.session.commit()

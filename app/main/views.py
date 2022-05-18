@@ -9,7 +9,7 @@ import os
 from PIL import Image
 from app.main import main
 
-
+@main.route('/')
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -81,7 +81,7 @@ def services():
 
 @main.route('/filterservice',methods=['GET','POST'])
 @login_required
- 
+
 def filterservice():
     form=SelectServiceForm()
     if form.validate_on_submit():
@@ -93,4 +93,19 @@ def filterservice():
 
 
 
+@main.route('/makeorder/<int:serv_id>')
+@login_required
+def makeorder(serv_id):
+    if current_user.is_authenticated:
+        form=OrderForm()
+        if form.validate_on_submit():
+            order=Order(order_date=form.devilerydate.data,details=form.Details.data)
+            order.save()
+    return render_template('order.html',form=form)
 
+@main.route('/orders')
+@login_required
+def orders():
+
+    allorders=Order.query.all()
+    return render_template('')
