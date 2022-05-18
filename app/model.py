@@ -90,6 +90,7 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'))
     time=db.Column(db.DateTime, default=datetime.utcnow)
+    content=db.Column(db.Text())
 
     def save(self):
         db.session.add(self)

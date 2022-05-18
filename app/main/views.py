@@ -1,3 +1,4 @@
+
 from flask import render_template,redirect,url_for,abort,request,flash
 from app.model import User,Order,Review,Service
 from .forms import UpdateProfile,ReviewForm,OrderForm,SelectServiceForm,AddServiceForm
@@ -24,6 +25,12 @@ def save_picture(form_picture):
     return picture_filename
 
 @main.route('/')
+def index():
+    title='Bridalbliss'
+
+    page = request.args.get('page',1, type = int )
+    services = Service.query.order_by(Service.posted.desc()).paginate(page = page, per_page = 3)
+    return render_template('index.html',services=services )
 
 
 
@@ -72,10 +79,11 @@ def addservice(user_id):
         if form.validate_on_submit():
             service=Service()
             service.save()
+            return redirect('main.index')
     return render_template('addservice.html',form=form, title='Add service')
 
-@main.route('/services')
-def services():
+@main.route('/dispservices',methods=['GET','POST'])
+def dispservices():
     services=Service.query.all()
     return render_template('displayservice.html', services=services)
 
@@ -93,7 +101,7 @@ def filterservice():
 
 
 
-@main.route('/makeorder/<int:serv_id>')
+@main.route('/makeorder/<int:serv_id>',methods=['GET','POST'])
 @login_required
 def makeorder(serv_id):
     if current_user.is_authenticated:
@@ -101,11 +109,27 @@ def makeorder(serv_id):
         if form.validate_on_submit():
             order=Order(order_date=form.devilerydate.data,details=form.Details.data)
             order.save()
-    return render_template('order.html',form=form)
+            return redirect('main.index')
+    return render_template('makeorder.html',form=form)
 
-@main.route('/orders')
+@main.route('/orders/<int:user_id>')
 @login_required
-def orders():
+def orders(user_id):
+    user=User.query.get(user_id)
 
-    allorders=Order.query.all()
-    return render_template('')
+    allorders=Order.query.filter_by(user_id=user_id).all()
+    return render_template('orders.html', orders=allorders,user=user)
+
+@main.route('/review/<int:serv_id>',methods=['GET','POST'])
+@login_required 
+def review(serv_id):
+    form=ReviewForm()
+    if form.validate_on_submit():
+        review=Review(content=form.review.data)
+        return redirect('main.index')
+
+    return render_template('review.html',form=form)
+
+       
+
+    
