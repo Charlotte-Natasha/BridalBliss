@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+
+
+
+{% block content %}
+
+
+    <div class="container landing">
+        <div class="row ">
+                
+                <div class="col-md-3  mt-2"><a class="btn btn-sm btn-outline-success " id="ref" href="{{url_for('main.addservice')}}">New service<i class="fa-solid fa-plus ms-2 text-success"></i></a></div>
+                 
+        </div>
+
+        <div class="row">
+            <div class="col-md-10  ">
+                {% for service in service.items %}
+                    <div class="container my-3 bg-light p-5 border rounded">
+                        <hr>
+                        <div class="row bg-light p-5">
+                            <div class="col-md-2  text-center ">
+                                    <img class=" blog-img me-10 d-block" style="clip-path: circle(); width: 75px;" src="{{ url_for('static', filename='images/' + service.user.profile_pic_path) }}">
+                                    <!-- <p id="usern"><a href="{{url_for('main.',username = blog.user.username)}}"><span  style="color: blue"><strong>{{service.user.username}}</strong></span> </a> </p>  -->
+                            </div>
+                            <div class="col-md-10 pr-4 d-justify userblog">
+                                <p class="text-success text-underline">Ksh {{service.cost}}</p>
+                                <hr>
+                                <a href="{{url_for('main.makeorder',serv_id = service.id)}}">Make Order</a>
+                                <br>
+                                <p>{{service.category}}</p>
+                                <div><span><a  href="{{url_for('main.review')}}"></a>Review</span>
+                                    <span class="text-danger ms-3">{{service.reviews|count}}</span>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                    </div>
+                       
+                {% endfor %}
+
+                {% for page_num in services.iter_pages(left_edge = 1, right_edge = 1, left_current=1, right_current = 2) %}
+                    {% if page_num %}
+                        {% if services.page == page_num %}
+                            <a href="{{url_for('main.index',page = page_num)}}" class="btn btn-sm btn-secondary mb-2">{{ page_num }}</a>
+                        {% else%}
+                        <a href="{{url_for('main.index',page = page_num)}}" class="btn btn-sm btn-outline-secondary mb-2">{{ page_num }}</a>
+                        {% endif %}
+                    {% else%}
+                        ...
+                    {% endif %}
+                {% endfor %}  
+
+            </div>
+            
+        </div>
+    </div>
+{%endblock%}
