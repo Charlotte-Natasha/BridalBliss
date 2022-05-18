@@ -9,7 +9,7 @@ import os
 from PIL import Image
 from app.main import main
 
-@main.route('/')
+
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -22,6 +22,10 @@ def save_picture(form_picture):
     i.thumbnail(output_size)
     i.save(picture_path)
     return picture_filename
+
+@main.route('/')
+
+
 
 @main.route('/profile',methods = ['POST','GET'])
 @login_required
@@ -59,16 +63,34 @@ def updateprofile(name):
 
 
 
-@main.route('/service/<int:user_id>')
+@main.route('/addservice/<int:user_id>')
 @login_required
-def service(user_id):
+def addservice(user_id):
     user=User.query.get(user_id)
     if user.provider:
         form=AddServiceForm()
         if form.validate_on_submit():
             service=Service()
             service.save()
-    return render_template('service.html',form=form, title='Add service')
+    return render_template('addservice.html',form=form, title='Add service')
+
+@main.route('/services')
+def services():
+    services=Service.query.all()
+    return render_template('displayservice.html', services=services)
+
+@main.route('/filterservice',methods=['GET','POST'])
+@login_required
+ 
+def filterservice():
+    form=SelectServiceForm()
+    if form.validate_on_submit():
+        budget=form.budget.data
+        affordable_services = db.session.query(Service).filter(Service.cost<=budget).all()
+    
+
+    return render_template('budget.html', budgets=affordable_services)
+
 
 
 
