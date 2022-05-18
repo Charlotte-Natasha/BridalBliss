@@ -110,7 +110,7 @@ def makeorder(serv_id):
             order=Order(order_date=form.devilerydate.data,details=form.Details.data)
             order.save()
             return redirect('main.index')
-    return render_template('makeorder.html',form=form)
+    return render_template('orders/makeorder.html',form=form)
 
 @main.route('/orders/<int:user_id>')
 @login_required
@@ -118,7 +118,7 @@ def orders(user_id):
     user=User.query.get(user_id)
 
     allorders=Order.query.filter_by(user_id=user_id).all()
-    return render_template('orders.html', orders=allorders,user=user)
+    return render_template('orders/orders.html', orders=allorders,user=user)
 
 @main.route('/review/<int:serv_id>',methods=['GET','POST'])
 @login_required 

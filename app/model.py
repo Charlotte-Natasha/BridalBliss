@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     password_secure=db.Column(db.String(255), nullable=False)
     bio=db.Column(db.String(255))
     profile_pic_path=db.Column(db.String())
+    provider=db.Column(db.Boolean,default=False,nullable=False)
 
     services=db.relationship("Service",backref="user",lazy="dynamic")
     orders= db.relationship('Order',backref = 'user',lazy = "dynamic")
