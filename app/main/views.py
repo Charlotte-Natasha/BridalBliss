@@ -1,4 +1,3 @@
-from flask import render_template
 from .forms import LogIn, Signup  
 from flask import render_template,redirect,url_for,abort,request,flash
 from app.model import User,Order,Review,Service
@@ -34,6 +33,10 @@ def save_picture(form_picture):
     i.thumbnail(output_size)
     i.save(picture_path)
     return picture_filename
+
+@main.route('/')
+
+
 
 @main.route('/profile',methods = ['POST','GET'])
 @login_required
@@ -71,14 +74,49 @@ def updateprofile(name):
 
 
 
-@main.route('/service/<int:user_id>')
+@main.route('/addservice/<int:user_id>')
 @login_required
-def service(user_id):
+def addservice(user_id):
     user=User.query.get(user_id)
     if user.provider:
         form=AddServiceForm()
         if form.validate_on_submit():
             service=Service()
             service.save()
-    return render_template('service.html',form=form, title='Add service')
+    return render_template('addservice.html',form=form, title='Add service')
 
+@main.route('/services')
+def services():
+    services=Service.query.all()
+    return render_template('displayservice.html', services=services)
+
+@main.route('/filterservice',methods=['GET','POST'])
+@login_required
+ 
+def filterservice():
+    form=SelectServiceForm()
+    if form.validate_on_submit():
+        budget=form.budget.data
+        affordable_services = db.session.query(Service).filter(Service.cost<=budget).all()
+    
+
+    return render_template('budget.html', budgets=affordable_services)
+
+
+
+@main.route('/makeorder/<int:serv_id>')
+@login_required
+def makeorder(serv_id):
+    if current_user.is_authenticated:
+        form=OrderForm()
+        if form.validate_on_submit():
+            order=Order(order_date=form.devilerydate.data,details=form.Details.data)
+            order.save()
+    return render_template('order.html',form=form)
+
+@main.route('/orders')
+@login_required
+def orders():
+
+    allorders=Order.query.all()
+    return render_template('')
