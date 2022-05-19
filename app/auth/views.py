@@ -5,9 +5,6 @@ from .. import db
 from flask_login import login_user,logout_user,login_required, current_user
 from ..model import User
 
-
-
-
 @auth.route('/signup',methods = ["GET","POST"])
 def signup():
     form = Signup()
@@ -29,13 +26,11 @@ def login():
         user=User.query.filter_by(username = form.username.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user,form.remember.data)
-            return redirect(request.args.get('next') or url_for('main_blueprint.blogs'))  
+            return redirect(request.args.get('next') or url_for('main.index'))  
 
         flash('Invalid username or Password')
         
-    return render_template('login.html', form=form)
-
-
+    return render_template('auth/login.html', form=form)
 
 @auth.route('/logout')
 @login_required
