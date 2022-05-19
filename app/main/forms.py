@@ -26,7 +26,7 @@ class UpdateProfile(FlaskForm):
                 raise ValidationError("The username has already been taken")
 
 class OrderForm(FlaskForm):
-    Details = TextAreaField('Blog Content',validators=[DataRequired()])
+    Details = TextAreaField('Order details',validators=[DataRequired()])
     devilerydate= DateTimeField('Delivery date',validators=[DataRequired()])
     submit = SubmitField('Order Now')
 
