@@ -76,6 +76,7 @@ class Order(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     order_date=db.Column(db.DateTime, default=datetime.utcnow)
+    details=db.Column(db.Text())
 
     services=db.relationship("Service",backref="order",lazy="dynamic")
     

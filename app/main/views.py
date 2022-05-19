@@ -108,7 +108,7 @@ def makeorder(serv_id):
     if current_user.is_authenticated:
         form=OrderForm()
         if form.validate_on_submit():
-            order=Order(order_date=form.devilerydate.data,details=form.Details.data)
+            order=Order(details=form.Details.data,user_id=current_user.id)
             order.save()
             return redirect(url_for('main.index'))
     return render_template('orders/makeorder.html',form=form)
@@ -141,7 +141,7 @@ def review(serv_id):
         review=Review(content=form.review.data)
         return redirect('main.index')
 
-    return render_template('review.html',form=form)
+    return render_template('reviews.html',form=form)
 
        
 
