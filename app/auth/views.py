@@ -6,10 +6,6 @@ from flask_login import login_user,logout_user,login_required, current_user
 from ..model import User
 
 
-@auth.route('/')
-def index():
-    return render_template('about.html')
-
 @auth.route('/signup',methods = ["GET","POST"])
 def signup():
     form = Signup()
