@@ -74,8 +74,6 @@ def updateprofile(name):
         return redirect(url_for('.profile',name = name))
     return render_template('profile/updateprofile.html',form =form)
 
-
-
 @main.route('/addservice/<int:user_id>')
 @login_required
 def addservice(user_id):
@@ -102,10 +100,7 @@ def filterservice():
         budget=form.budget.data
         affordable_services = db.session.query(Service).filter(Service.cost<=budget).all()
     
-
     return render_template('budget/budget.html',form=form, budgets=affordable_services)
-
-
 
 @main.route('/makeorder/<int:serv_id>',methods=['GET','POST'])
 @login_required
@@ -117,9 +112,6 @@ def makeorder(serv_id):
             order.save()
             return redirect('main.index')
     return render_template('orders/makeorder.html',form=form)
-
-
-
 
 @main.route('/orders/<int:user_id>')
 @login_required
