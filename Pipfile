@@ -11,6 +11,7 @@ flask-migrate = "*"
 email-validator = "*"
 pillow = "*"
 psycopg2-binary = "*"
+flask-bootstrap = "*"
 
 [dev-packages]
 

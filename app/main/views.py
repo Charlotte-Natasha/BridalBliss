@@ -98,7 +98,7 @@ def filterservice():
         affordable_services = db.session.query(Service).filter(Service.cost<=budget).all()
     
 
-    return render_template('budget/budget.html', budgets=affordable_services)
+    return render_template('budget/budget.html',form=form, budgets=affordable_services)
 
 
 

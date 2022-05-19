@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f282e01edeb2855fea0f2fc488b5773e881cce50be88f552534a30cec10b3fff"
+            "sha256": "82e9a6e87db430ea40c91d16670a274e1ba488d60bb1fd9bb2dfd3120ad337fa"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -40,6 +40,14 @@
             "markers": "python_version >= '3.6' and python_version < '4.0'",
             "version": "==2.2.1"
         },
+        "dominate": {
+            "hashes": [
+                "sha256:76ec2cde23700a6fc4fee098168b9dee43b99c2f1dd0ca6a711f683e8eb7e1e4",
+                "sha256:84b5f71ed30021193cb0faa45d7776e1083f392cfe67a49f44e98cb2ed76c036"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==2.6.0"
+        },
         "email-validator": {
             "hashes": [
                 "sha256:6757aea012d40516357c0ac2b1a4c31219ab2f899d26831334c5d069e8b6c3d8",
@@ -55,6 +63,13 @@
             ],
             "index": "pypi",
             "version": "==2.1.2"
+        },
+        "flask-bootstrap": {
+            "hashes": [
+                "sha256:cb08ed940183f6343a64e465e83b3a3f13c53e1baabb8d72b5da4545ef123ac8"
+            ],
+            "index": "pypi",
+            "version": "==3.3.7.1"
         },
         "flask-login": {
             "hashes": [
@@ -164,6 +179,14 @@
             ],
             "markers": "python_version < '3.10'",
             "version": "==4.11.3"
+        },
+        "importlib-resources": {
+            "hashes": [
+                "sha256:b6062987dfc51f0fcb809187cffbd60f35df7acb4589091f154214af6d0d49d3",
+                "sha256:e447dc01619b1e951286f3929be820029d48c75eb25d265c28b92a16548212b8"
+            ],
+            "markers": "python_version < '3.9'",
+            "version": "==5.7.1"
         },
         "itsdangerous": {
             "hashes": [
@@ -382,6 +405,12 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
             "version": "==1.4.36"
+        },
+        "visitor": {
+            "hashes": [
+                "sha256:2c737903b2b6864ebc6167eef7cf3b997126f1aa94bdf590f90f1436d23e480a"
+            ],
+            "version": "==0.1.3"
         },
         "werkzeug": {
             "hashes": [
