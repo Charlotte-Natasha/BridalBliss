@@ -3,7 +3,7 @@ from wtforms import StringField,PasswordField,EmailField,SubmitField,BooleanFiel
 from wtforms.validators import DataRequired,Length,EqualTo,Email
 from wtforms.widgets import TextArea
 from flask_wtf.file import FileField,FileAllowed
-from wtforms import StringField,TextAreaField, SubmitField,ValidationError,DateTimeField,SelectField,IntegerField
+from wtforms import StringField,TextAreaField, SubmitField,ValidationError,DateTimeField,SelectField,IntegerField,DateField
 from wtforms.validators import DataRequired,Email,Length
 from flask_login import current_user
 from ..model import User
@@ -27,7 +27,7 @@ class UpdateProfile(FlaskForm):
 
 class OrderForm(FlaskForm):
     Details = TextAreaField('Order details',validators=[DataRequired()])
-    devilerydate= DateTimeField('Delivery date',validators=[DataRequired()])
+    devilerydate= DateField('Delivery date')
     submit = SubmitField('Order Now')
 
 

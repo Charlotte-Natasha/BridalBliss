@@ -1,4 +1,89 @@
-<nav class="navbar navbar-expand-lg bg-light" id="myNav">
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid row">
+        <div class="col-md-4">
+            <h1>Bridal Bliss</h1>
+        </div>
+        <div class="col-md-8">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item p-3">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item p-3">
+                        <a class="nav-link" href="/services">Services</a>
+                    </li>
+                    {%if current_user.is_authenticated%}
+                    <li class="nav-item p-3">
+                        <a class="nav-link" href="{{url_for('main.profile',name=current_user.username)}}">Profile</a>
+                    </li>
+                    </li>
+                    <li class="nav-item p-3">
+                        <a class="nav-link" href="{{url_for('auth.logout')}}">Logout</a>
+                    </li>
+                    {%else%}
+                    <li class="nav-item p-3">
+                        <a class="nav-link" href="{{url_for('auth.signup')}}">Sign Up</a>
+                    </li>
+                    <li class="nav-item p-3">
+                        <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
+                    </li>
+                    {%endif%}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg bg-light" id="myNav">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Bridal Bliss</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +92,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/about.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about.html">About Us</a>
@@ -20,6 +105,7 @@
                 </li>
                 {% if current_user.is_authenticated %}
 
+<<<<<<< HEAD
                 <button type="button" class="btn btn-primary">{{current_user.username}}</button>
 
 
@@ -44,11 +130,35 @@
 
                 {%endif%}
 
+=======
+                
+                
+                    
+                    
+                    <li class="nav-item"><a class="nav-link bg-info rounded-pill px-4" href="{{url_for('main.profile',name=current_user.username)}}"> Profile</a></li>
+                    
+                    
+                    <li class="nav-item"><a class="nav-link text-danger bg-info px-4 rounded-pill ms-3 me-3" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
+                    <button type="button" class="btn btn-primary  rounded">{{current_user.username}}</button>
+                
+                
+                        {% else %}
+                        
+                        <li class="nav-item d-flex">
+                            <a  class="nav-link" href="{{url_for('auth.signup')}}"><i class="fas fa-user-plus"></i></i>&nbsp; Sign Up</a>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <a  class="nav-link" href="{{url_for('auth.login')}}" ><i class="fas fa-sign-in-alt "></i>&nbsp; Log In</a>
+                        </li>
+                    
+                        {%endif%}
+                
+>>>>>>> master
             </ul>
 
         </div>
     </div>
-</nav>
+</nav> -->
 
 
 

@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<div>
+<div class="bg-light mx-auto">
     {%if orders%}
 <h6 class="text-center">Users Order details</h6>
 <div>
@@ -11,7 +11,7 @@
             <th scope="col">Order ID</th>
             <th scope="col">Ordered by</th>
             <th scope="col">Order Date</th>
-            <th scope="col">Number of services ordered</th>
+            
             <th scope="col">More Details</th>
             <th scope="col"> Remove</th>
           </tr>
@@ -22,9 +22,9 @@
             <th scope="row">{{order.id}}</th>
             <td>{{user.username}}</td>
             <td>{{order.order_date}}</td>
-            <td>{{order.services|count}}</td>
+            
             <td>{{order.details}}</td>
-            <td><a class="btn btn-danger" href="{{url_for('main.deleteorders',id=order.id)}}">Delete</a></td>
+            <td><a class="btn btn-danger" href="{{url_for('main.deleteorder',id=order.id)}}">Delete</a></td>
           </tr>
           {%endfor%}
          
