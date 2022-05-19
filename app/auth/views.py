@@ -1,14 +1,12 @@
 from flask import render_template,redirect,url_for, flash,request
 from .forms import LogIn, Signup  
-from app import auth
+from . import auth
 from .. import db
 from flask_login import login_user,logout_user,login_required, current_user
 from ..model import User
 
 
-@auth.route('/')
-def index():
-    return render_template('about.html')
+
 
 @auth.route('/signup',methods = ["GET","POST"])
 def signup():
