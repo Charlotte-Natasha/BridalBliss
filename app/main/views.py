@@ -124,7 +124,7 @@ def orders(user_id):
 @main.route('/deleteorder/<int:id>',methods=['GET','POST'])
 @login_required
 def deleteorder(id):
-    order=Order.query.get(id).first()
+    order=Order.query.filter_by(id=id).first()
     order.delete()
     return redirect('main.orders')
 
