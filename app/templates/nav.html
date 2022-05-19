@@ -93,7 +93,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/about.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about.html">About Us</a>
@@ -106,16 +106,16 @@
                 </li>
                 {% if current_user.is_authenticated %}
 
-                <button type="button" class="btn btn-primary">{{current_user.username}}</button>
                 
                 
                     
-                    <li><a class="dropdown-item" href="#">Account</a></li>
-                    <li><a class="dropdown-item" href="{{url_for('main.profile',name=current_user.username)}}"><i class="far fa-user"></i>&nbsp;Update Profile</a></li>
-                    <li><hr class="dropdown-divider" /></li>
                     
-                    <li><a class="dropdown-item text-danger" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
+                    <li class="nav-item"><a class="nav-link bg-info rounded-pill px-4" href="{{url_for('main.profile',name=current_user.username)}}"> Profile</a></li>
                     
+                    
+                    <li class="nav-item"><a class="nav-link text-danger bg-info px-4 rounded-pill ms-3 me-3" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
+                    <button type="button" class="btn btn-primary  rounded">{{current_user.username}}</button>
+                
                 
                         {% else %}
                         
