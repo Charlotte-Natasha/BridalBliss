@@ -2,81 +2,9 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: url(../images/wedding.jpg);
+    background: #f2e2d2;
 }
 
-#myNav{
-    background: yellow;
-    padding: 30px;
+nav{
+    background: #9FB7B9;
 }
-/*.hero{
-    position: fixed;
-    left: -200px;
-    width: 180px;
-    height: 100%;
-    background: aqua;
-}
-.hero h2{
-    font-size: 22px;
-    text-align: center;
-    line-height: 70px;
-    background: black;
-    user-select: none;
-}
-.hero a{
-    display: block;
-    height: 65px;
-    width: 100%;
-    line-height: 65px;
-    font-size: 2Opx;
-    padding-left: 30px;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-    transition: .4s;
-}
-ul li:hover a{
-    padding-left: 50px;
-}
-#check{
-    display: none;
-}
-label #bars, label #cancel{
-    position: absolute;
-    cursor: pointer;
-    border-radius: 3px;
-    background: aqua;
-}
-label #bars{
-    left: 40px;
-    top: 25px;
-    font-size: 35px;
-    padding: 6px 12px;
-    transition: all .5s;
-}
-label #cancel{
-    z-index: 1111;
-    left: 195px;
-    top: 17px;
-    font-size: 30px;
-    padding: 4px 9px;
-    transition: all .5 ease;
-}
-#check:checked ~ .hero{
-    left: 0;
-}
-#check:checked ~ label #bars{
-    left: 250px;
-    opacity: 0;
-    pointer-events: none;
-}
-#check:checked ~ label #cancel{
-    left: 195px;
-}
-#check:checked section{
-    margin-left: 250px;
-} */
-/* section{
-    background: yellow;
-    height: 100vh;
-    transition: all .5s;
-} */

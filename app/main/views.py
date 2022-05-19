@@ -128,11 +128,6 @@ def deleteorder(id):
     order.delete()
     return redirect('main.orders')
 
-
-
-
-
-
 @main.route('/review/<int:serv_id>',methods=['GET','POST'])
 @login_required 
 def review(serv_id):
@@ -143,6 +138,5 @@ def review(serv_id):
 
     return render_template('reviews.html',form=form)
 
-       
 
     
