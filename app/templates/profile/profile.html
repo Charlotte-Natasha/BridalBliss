@@ -19,7 +19,7 @@
             {%endif%}
 
      
-            <div class="col-md-3  mt-2"><a class="btn btn-sm btn-outline-success " id="ref" href="{{url_for('main.addservice',user_id=current_user.id)}}">New service<i class="fa-solid fa-plus ms-2 text-success"></i></a></div>
+            <div class="  my-4"><a class="btn  btn-outline-success d-block " id="ref" href="{{url_for('main.addservice',user_id=current_user.id)}}">Add a service +<i class="fa-solid fa-plus ms-2 text-success"></i></a></div>
     <div class="card testimonial-card">
     <div class="card-up indigo lighten-1"></div>
     <div class="avatar mx-auto white">
@@ -30,10 +30,10 @@
       <hr>
       <p> {{current_user.email}} </p>
       <p><i class="fas fa-quote-left"></i> {{current_user.bio}} <i class="fas fa-quote-right"></i> </p>
-      <div>
+      <div class="my-4">
         <a  target="blank" class="btn btn-secondary" href="{{url_for('main.orders',user_id=current_user.id)}}">View My orders</a>
       </div>
-      <button class="btn btn-sm btn-info" id="showform"> Update</button>
+      <button class="btn btn-sm btn-success" id="showform"> Update</button>
     </div>
       
       </div>
