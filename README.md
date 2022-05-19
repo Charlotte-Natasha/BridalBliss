@@ -1,6 +1,6 @@
 # Project Name
 
-Bridal Bliss
+BRIDAL BLISS
 
 ## Collaborators
 
@@ -21,6 +21,7 @@ The requirements.text will guide you on the needed modules.
 Run the application by typing python3.10 manage.py
 
 ### Issues
+
 Flask_Script is not compatible with flask 2.1.2, which is what is used for this application. Downgrading Flask allows flask_script to run.. The cost of things(i.e escape) in Jinja wont work with versions of Flask less that 2.0.0
 Setup
 
