@@ -12,6 +12,7 @@ email-validator = "*"
 pillow = "*"
 psycopg2-binary = "*"
 flask-bootstrap = "*"
+gunicorn = "*"
 
 [dev-packages]
 
