@@ -19,7 +19,7 @@ def signup():
             flash('That username is in use, try a new one')
     return render_template('auth/signup.html', form=form)
 
-@auth.route('/login',methods=['GET','POST'])
+@auth.route('/login.html',methods=['GET','POST'])
 def login():
     form=LogIn()
     if form.validate_on_submit():
