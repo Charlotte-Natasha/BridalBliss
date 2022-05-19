@@ -28,12 +28,17 @@ def save_picture(form_picture):
 def index():
     title='Bridalbliss'
     
-
     page = request.args.get('page',1, type = int )
     services = Service.query.order_by(Service.user_id.desc()).paginate(page = page, per_page = 3)
     return render_template('index.html',services=services )
 
+@main.route('/about.html')
+def about():
+    return render_template('about.html')    
 
+@main.route('/team.html')
+def team():
+    return render_template('team.html')       
 
 @main.route('/profile',methods = ['POST','GET'])
 @login_required
@@ -53,8 +58,8 @@ def profile():
         form.username.data = current_user.username
         form.email.data = current_user.email
         form.bio.data = current_user.bio
-    profile_pic_path = url_for('static',filename = 'images/'+ current_user.profile_pic_path) 
-    return render_template('profile/profile.html', profile_pic_path=profile_pic_path, form = form)
+    # profile_pic_path = url_for('static',filename = 'images/'+ current_user.profile_pic_path) 
+    return render_template('profile/profile.html',  form = form)
 
 @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
 @login_required
@@ -71,14 +76,14 @@ def updateprofile(name):
 
 
 
-@main.route('/addservice/<int:user_id>')
+@main.route('/addservice/<int:user_id>',methods=['GET','POST'])
 @login_required
 def addservice(user_id):
     user=User.query.get(user_id)
-    if user.provider:
-        form=AddServiceForm()
-        if form.validate_on_submit():
-            service=Service()
+    
+    form=AddServiceForm()
+    if form.validate_on_submit():
+            service=Service(category=form.category.data,cost=form.cost.data)
             service.save()
             return redirect('main.index')
     return render_template('service/addservice.html',form=form, title='Add service')
@@ -110,7 +115,7 @@ def makeorder(serv_id):
         if form.validate_on_submit():
             order=Order(order_date=form.devilerydate.data,details=form.Details.data)
             order.save()
-            return redirect('main.index')
+            return redirect(url_for('main.index'))
     return render_template('orders/makeorder.html',form=form)
 
 

@@ -8,37 +8,38 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="">Contact us</a></li>
-            <li><a href="#">Our Team</a></li>
+            <<<<<<< HEAD <li><a href="#">Portfolio</a></li>
+                <li><a href="">Contact us</a></li>
+                <li><a href="#">Our Team</a></li>
+                =======
+                <li><a href="{{url_for('main.profile')}}">Profile</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="/team.html">Our Team</a></li>
+                >>>>>>> master {% if current_user.is_authenticated %}
+
+                <button type="button" class="btn btn-primary">{{current_user.username}}</button>
 
 
 
-            {% if current_user.is_authenticated %}
+                <li><a class="dropdown-item" href="#">Account</a></li>
+                <li><a class="dropdown-item" href="{{url_for('main.profile',name=current_user.username)}}"><i class="far fa-user"></i>&nbsp;Update Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
 
-            <button type="button" class="btn btn-primary">{{current_user.username}}</button>
-
-
-
-            <li><a class="dropdown-item" href="#">Account</a></li>
-            <li><a class="dropdown-item" href="{{url_for('main.profile',name=current_user.username)}}"><i class="far fa-user"></i>&nbsp;Update Profile</a></li>
-            <li>
-                <hr class="dropdown-divider" />
-            </li>
-
-            <li><a class="dropdown-item text-danger" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
+                <li><a class="dropdown-item text-danger" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
 
 
-            {% else %}
+                {% else %}
 
-            <li class="nav-item">
-                <a class="" href="{{url_for('auth.signup')}}"><i class="fas fa-user-plus"></i></i>&nbsp; Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="" href="{{url_for('auth.login')}}"><i class="fas fa-sign-in-alt "></i>&nbsp; Log In</a>
-            </li>
+                <li class="nav-item">
+                    <a class="" href="{{url_for('auth.signup')}}"><i class="fas fa-user-plus"></i></i>&nbsp; Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="{{url_for('auth.login')}}"><i class="fas fa-sign-in-alt "></i>&nbsp; Log In</a>
+                </li>
 
-            {%endif%}
+                {%endif%}
 
         </ul>
 

@@ -15,8 +15,7 @@
                         <hr>
                         <div class="row bg-light p-5">
                             <div class="col-md-2  text-center ">
-                                    <img class=" blog-img me-10 d-block" style="clip-path: circle(); width: 75px;" src="{{ url_for('static', filename='images/' + service.user.profile_pic_path) }}">
-                                    <!-- <p id="usern"><a href="{{url_for('main.',username = blog.user.username)}}"><span  style="color: blue"><strong>{{service.user.username}}</strong></span> </a> </p>  -->
+                                    
                             </div>
                             <div class="col-md-10 pr-4 d-justify userblog">
                                 <p class="text-success text-underline">Ksh {{service.cost}}</p>
@@ -24,8 +23,8 @@
                                 <a href="{{url_for('main.makeorder',serv_id = service.id)}}">Make Order</a>
                                 <br>
                                 <p>{{service.category}}</p>
-                                <div><span><a  href="{{url_for('main.review')}}"></a>Review</span>
-                                    <span class="text-danger ms-3">{{service.reviews|count}}</span>
+                                <div><span><a  href="{{url_for('main.review',serv_id=service.id)}}"></a>Review</span>
+                                    <span class="text-danger ms-3">{{service.reviews}}</span>
                                 </div>
                             </div>
                         </div> 

@@ -1,7 +1,15 @@
+
 from flask_login import UserMixin
 from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+
+
+
+
+@login_manager.user_loader
+def load_user(id):
+        return User.query.get(int(id))
 
 class User(db.Model, UserMixin):
     __tablename__="users"
@@ -11,16 +19,14 @@ class User(db.Model, UserMixin):
 
     password_secure=db.Column(db.String(255), nullable=False)
     bio=db.Column(db.String(255))
-    profile_pic_path=db.Column(db.String())
+    profile_pic_path=db.Column(db.String(),default='default.png')
     provider=db.Column(db.Boolean,default=False,nullable=False)
 
     services=db.relationship("Service",backref="user",lazy="dynamic")
     orders= db.relationship('Order',backref = 'user',lazy = "dynamic")
     reviews= db.relationship('Review',backref = 'user',lazy = "dynamic")
 
-    @login_manager.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
+    
   
     @property
     def set_password(self):
