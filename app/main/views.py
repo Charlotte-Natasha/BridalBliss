@@ -74,14 +74,14 @@ def updateprofile(name):
         return redirect(url_for('.profile',name = name))
     return render_template('profile/updateprofile.html',form =form)
 
-@main.route('/addservice/<int:user_id>')
+@main.route('/addservice/<int:user_id>',methods=['GET','POST'])
 @login_required
 def addservice(user_id):
     user=User.query.get(user_id)
-    if user.provider:
-        form=AddServiceForm()
-        if form.validate_on_submit():
-            service=Service()
+    
+    form=AddServiceForm()
+    if form.validate_on_submit():
+            service=Service(category=form.category.data,cost=form.cost.data)
             service.save()
             return redirect('main.index')
     return render_template('service/addservice.html',form=form, title='Add service')
@@ -110,7 +110,7 @@ def makeorder(serv_id):
         if form.validate_on_submit():
             order=Order(order_date=form.devilerydate.data,details=form.Details.data)
             order.save()
-            return redirect('main.index')
+            return redirect(url_for('main.index'))
     return render_template('orders/makeorder.html',form=form)
 
 @main.route('/orders/<int:user_id>')
