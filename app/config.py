@@ -19,6 +19,7 @@ class Config:
 
 class ProdConfig(Config):
     """"""
+    SQLALCHEMY_DATABASE_URL=os.environ.get("DATABASE_URL")
     
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DEV_DATABASE_URL")
