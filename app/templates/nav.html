@@ -6,19 +6,19 @@
         </button>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/about.html">About</a></li>
             <li><a href="/addservice.html">Services</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Contact us</a></li>
-            <li><a href="#">Our Team</a></li>
+            <li><a href="/team.html">Our Team</a></li>
 
 
         
             {% if current_user.is_authenticated %}
 
-  <button type="button" class="btn btn-primary">{{current_user.username}}</button>
-  
-  
+<button type="button" class="btn btn-primary">{{current_user.username}}</button>
+
+
     
     <li><a class="dropdown-item" href="#">Account</a></li>
     <li><a class="dropdown-item" href="{{url_for('main.profile',name=current_user.username)}}"><i class="far fa-user"></i>&nbsp;Update Profile</a></li>
@@ -29,12 +29,12 @@
 
         {% else %}
         
-          <li class="nav-item">
-              <a  class="" href="{{url_for('auth.signup')}}"><i class="fas fa-user-plus"></i></i>&nbsp; Sign Up</a>
-          </li>
-          <li class="nav-item">
-              <a  class="" href="{{url_for('auth.login')}}" ><i class="fas fa-sign-in-alt "></i>&nbsp; Log In</a>
-          </li>
+        <li class="nav-item">
+            <a  class="" href="{{url_for('auth.signup')}}"><i class="fas fa-user-plus"></i></i>&nbsp; Sign Up</a>
+        </li>
+        <li class="nav-item">
+            <a  class="" href="{{url_for('auth.login')}}" ><i class="fas fa-sign-in-alt "></i>&nbsp; Log In</a>
+        </li>
     
         {%endif%}
             
