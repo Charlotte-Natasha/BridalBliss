@@ -28,12 +28,17 @@ def save_picture(form_picture):
 def index():
     title='Bridalbliss'
     
-
     page = request.args.get('page',1, type = int )
     services = Service.query.order_by(Service.user_id.desc()).paginate(page = page, per_page = 3)
     return render_template('index.html',services=services )
 
+@main.route('/about.html')
+def about():
+    return render_template('about.html')    
 
+@main.route('/team.html')
+def team():
+    return render_template('team.html')       
 
 @main.route('/profile',methods = ['POST','GET'])
 @login_required
