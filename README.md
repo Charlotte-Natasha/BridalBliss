@@ -11,8 +11,7 @@ BRIDAL BLISS
 [@Abishag-Maitha](https://www.github.com/Abishag-Maitha)
 
 ## Description
-
-A website where users can register/login to post their pitches
+Everything is ready, from the ceremony to the reception to the party. The food is ready, the transportation is arranged, the make-up is flawless, and the guests are all waiting... But isn't it never that simple? Lets' do that for you. Enjoy your day and let us do all the heavy lifting.
 
 ## Usage
 
