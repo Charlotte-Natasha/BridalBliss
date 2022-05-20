@@ -1,38 +1,28 @@
-{%extends 'base.html'%} {% block content %}
+{%extends 'base.html'%} {% block content %} {% block content %}
 
 
 <div class="container landing">
-
-
+    {% for service in services.items %}
     <div class="row">
-        <div class="col-md-10  ">
-            {% for service in services.items %}
-            <div class="container my-3 bg-light p-5 border rounded">
 
-                <div class="row bg-light py-5">
-                    <div class="col-md-2  text-center ">
-
-                    </div>
-                    <div class="col-md-10 pr-4 d-justify userblog">
-                        <p class="text-success text-underline">Ksh {{service.cost}}</p>
-                        <hr>
-                        <a href="{{url_for('main.makeorder',serv_id = service.id)}}">Make Order</a>
-                        <br>
-                        <p>{{service.category}}</p>
-                        <div><span><a  class="btn btn-info" href="{{url_for('main.review',serv_id=service.id)}}">Review</a></span>
-                            <span class="text-danger ms-3">{{service.all_reviews}}</span>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="card col-md-4 mb-2 mt-3" style="width: 40rem;">
+            <img class="card-img-top" src="{{url_for('static', filename='images/cars.jpg')}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{service.category}}</h5>
+                <p class="card-text">Describe your choice of cars and we will deliver.</p>
             </div>
-
-            {% endfor %} {% for page_num in services.iter_pages(left_edge = 1, right_edge = 1, left_current=1, right_current = 2) %} {% if page_num %} {% if services.page == page_num %}
-            <a href="{{url_for('main.index',page = page_num)}}" class="btn btn-sm btn-secondary mb-2">{{ page_num }}</a> {% else %}
-            <a href="{{url_for('main.index',page = page_num)}}" class="btn btn-sm btn-outline-secondary mb-2">{{ page_num }}</a> {% endif %} {% else %} ... {% endif %} {% endfor %}
-
+            <div class="card-footer">
+                <a href="{{url_for('main.makeorder',serv_id = service.id)}}" class="btn btn-secondary">Make Order</a>
+                <span><a  class="btn btn-secondary" href="{{url_for('main.review',serv_id=service.id)}}">Review</a></span>
+                <span class="text-danger ms-3">{{service.all_reviews}}</span>
+            </div>
         </div>
-
+        {% endfor %} {% for page_num in services.iter_pages(left_edge = 1, right_edge = 1, left_current=1, right_current = 2) %} {% if page_num %} {% if services.page == page_num %}
+        <a href="{{url_for('main.index',page = page_num)}}" class="btn btn-sm btn-secondary mb-2">{{ page_num }}</a> {% else%}
+        <a href="{{url_for('main.index',page = page_num)}}" class="btn btn-sm btn-outline-secondary mb-2">{{ page_num }}</a> {% endif %} {% else%} ... {% endif %} {% endfor %}
     </div>
 </div>
-{% endblock %}
+
+
+
+{%endblock%}

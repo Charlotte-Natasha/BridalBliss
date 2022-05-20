@@ -10,6 +10,7 @@ bootstrap=Bootstrap()
 login_manager = LoginManager()
 db = SQLAlchemy()
 
+
 migrate=Migrate()
 #Initializing application
 def create_app(config_name):
