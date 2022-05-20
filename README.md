@@ -5,8 +5,10 @@ BRIDAL BLISS
 ## Collaborators
 
 [@Charlotte-Natasha](https://www.github.com/Charlotte-Natasha)
+
 [@Michael-Ogaye](https://www.github.com/Michael-Ogaye)
-[Abishag-Maitha](https://www.github.com/Abishag-Maitha)
+
+[@Abishag-Maitha](https://www.github.com/Abishag-Maitha)
 
 ## Description
 
